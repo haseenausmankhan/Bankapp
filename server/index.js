@@ -235,11 +235,15 @@ setupDb().then(database => {
         }
     });
 
-    const server = app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}`);
-    });
+    if (require.main === module) {
+        const server = app.listen(PORT, () => {
+            console.log(`Server running on http://localhost:${PORT}`);
+        });
 
-    server.on('error', (err) => {
-        console.error('Server error:', err);
-    });
+        server.on('error', (err) => {
+            console.error('Server error:', err);
+        });
+    }
 });
+
+module.exports = app;

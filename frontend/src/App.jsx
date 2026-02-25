@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Icons } from './Icons';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : '/api';
 
 // Helper for fetch with credentials
 const apiFetch = (url, options = {}) => {
